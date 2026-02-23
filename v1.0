@@ -36,42 +36,42 @@ AutoFarmAction:createToggleSwitch("Tự động thu hoạch & bán", function(st
         runningFarm = true
         task.spawn(function()
             while flagFarm do
-                local PlantFolder = workspace.ClientPlants
-                local count = 0
-                local uuid = 0
+                local PlantFolder = workspace:WaitForChild("ClientPlants")
                 for _, plant in pairs(PlantFolder:GetChildren()) do
+                    local count = 0
+                    local uuid = 0
                     uuid = plant:GetAttribute("Uuid")
                     for _, obj in pairs(plant:GetChildren()) do
                         if string.match(obj.Name, "Fruit%d+$") then
                             count += 1
                         end
                     end
-                end
-
-                if count > 0 then
-                    for i = 1, count do
-                        local args = {
-                            [1] = {
+                    if count > 0 then
+                        for i = 1, count do
+                            local args = {
                                 [1] = {
-                                    ["GrowthAnchorIndex"] = i,
-                                    ["Uuid"] = uuid
+                                    [1] = {
+                                        ["GrowthAnchorIndex"] = i,
+                                        ["Uuid"] = uuid
+                                    }
                                 }
                             }
-                        }
-
+    
+                            game:GetService("ReplicatedStorage").RemoteEvents.HarvestFruit:FireServer(unpack(args))
+                        end
+                    else
+                        local args = {
+                                [1] = {
+                                    [1] = {
+                                        ["Uuid"] = uuid
+                                    }
+                                }
+                            }
+    
                         game:GetService("ReplicatedStorage").RemoteEvents.HarvestFruit:FireServer(unpack(args))
                     end
-                else
-                    local args = {
-                            [1] = {
-                                [1] = {
-                                    ["Uuid"] = uuid
-                                }
-                            }
-                        }
-
-                    game:GetService("ReplicatedStorage").RemoteEvents.HarvestFruit:FireServer(unpack(args))
                 end
+
                 task.wait(1)
                 local sellArgs = {
                     [1] = "SellAll"
