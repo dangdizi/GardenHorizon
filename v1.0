@@ -37,8 +37,9 @@ AutoFarmAction:createToggleSwitch("Tự động thu hoạch & bán", function(st
         task.spawn(function()
             while flagFarm do
                 local PlantFolder = workspace.ClientPlants
+                local count = 0
+                local uuid = 0
                 for _, plant in pairs(PlantFolder:GetChildren()) do
-                    local count = 0
                     local uuid = plant:GetAttribute("Uuid")
                     for _, obj in pairs(plant:GetChildren()) do
                         if string.match(obj.Name, "Fruit%d+$") then
