@@ -5,7 +5,7 @@ DiziGui:setTitle("Garden Horizons - Dizi Hub")
 
 
 local InfoAction = DiziGui:createAction(true)
-local InfoTab = DiziGui:createTab("rbxassetid://133458018032042", "Teleport")
+local InfoTab = DiziGui:createTab("rbxassetid://133458018032042", "Giới thiệu")
 InfoTab:setAction(InfoAction)
 
 InfoAction:createLabel("Giới thiệu phiên bản", Color3.fromRGB(45, 120, 217))
@@ -14,7 +14,7 @@ InfoAction:createText("Version: V1.0", Color3.fromRGB(255,255,255))
 InfoAction:createText("Author: Đăng Dizi", Color3.fromRGB(255,255,255))
 InfoAction:createText("Chức năng: tự thu hoạch, bán, mua hạt giống", Color3.fromRGB(255,255,255))
 InfoAction:createHr()
-InfoAction:createText("Kịch bản lỗi vui lòng báo ngay cho tôi: dizi.fishing@gmail.com", Color3.fromRGB(229, 38, 38))
+InfoAction:createText("Kịch bản lỗi vui lòng báo ngay cho tôi: \ndizi.fishing@gmail.com", Color3.fromRGB(229, 38, 38))
 
 
 
